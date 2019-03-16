@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="ua_table_licensing_config">
+    <ua_table_licensing_config action="INSERT_OR_UPDATE">
+        <is_fulfillment>false</is_fulfillment>
+        <license_condition/>
+        <license_model>none</license_model>
+        <license_roles/>
+        <name>x_snc_the_division_record</name>
+        <op_delete>true</op_delete>
+        <op_insert>true</op_insert>
+        <op_update>true</op_update>
+        <owner_condition/>
+        <sys_class_name>ua_table_licensing_config</sys_class_name>
+        <sys_created_by>admin-eduque</sys_created_by>
+        <sys_created_on>2019-03-16 02:46:05</sys_created_on>
+        <sys_id>bb21a9dc1354fb401f2f53173244b0eb</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_snc_the_division_record</sys_name>
+        <sys_package display_value="The Division 2 Discord Tracker" source="x_snc_the_division">733ed55c1354fb401f2f53173244b06c</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="The Division 2 Discord Tracker">733ed55c1354fb401f2f53173244b06c</sys_scope>
+        <sys_update_name>ua_table_licensing_config_bb21a9dc1354fb401f2f53173244b0eb</sys_update_name>
+        <sys_updated_by>admin-eduque</sys_updated_by>
+        <sys_updated_on>2019-03-16 02:46:05</sys_updated_on>
+    </ua_table_licensing_config>
+</record_update>

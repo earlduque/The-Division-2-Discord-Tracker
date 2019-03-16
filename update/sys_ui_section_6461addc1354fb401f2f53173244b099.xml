@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_section caption="" section_id="6461addc1354fb401f2f53173244b099" sys_domain="global" table="x_snc_the_division_players" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>number</element>
+            <position>0</position>
+            <sys_created_by>admin-eduque</sys_created_by>
+            <sys_created_on>2019-03-16 02:46:57</sys_created_on>
+            <sys_id>6c61addc1354fb401f2f53173244b09f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_the_division_players" sys_domain="global" view="Default view">6461addc1354fb401f2f53173244b099</sys_ui_section>
+            <sys_updated_by>admin-eduque</sys_updated_by>
+            <sys_updated_on>2019-03-16 02:46:57</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>name</element>
+            <position>1</position>
+            <sys_created_by>admin-eduque</sys_created_by>
+            <sys_created_on>2019-03-16 02:46:57</sys_created_on>
+            <sys_id>e461addc1354fb401f2f53173244b0a0</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_the_division_players" sys_domain="global" view="Default view">6461addc1354fb401f2f53173244b099</sys_ui_section>
+            <sys_updated_by>admin-eduque</sys_updated_by>
+            <sys_updated_on>2019-03-16 02:46:57</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>pid</element>
+            <position>2</position>
+            <sys_created_by>admin-eduque</sys_created_by>
+            <sys_created_on>2019-03-16 02:46:57</sys_created_on>
+            <sys_id>6c61addc1354fb401f2f53173244b0a0</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_the_division_players" sys_domain="global" view="Default view">6461addc1354fb401f2f53173244b099</sys_ui_section>
+            <sys_updated_by>admin-eduque</sys_updated_by>
+            <sys_updated_on>2019-03-16 02:46:57</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>platform</element>
+            <position>3</position>
+            <sys_created_by>admin-eduque</sys_created_by>
+            <sys_created_on>2019-03-16 02:46:57</sys_created_on>
+            <sys_id>e061addc1354fb401f2f53173244b0a1</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_the_division_players" sys_domain="global" view="Default view">6461addc1354fb401f2f53173244b099</sys_ui_section>
+            <sys_updated_by>admin-eduque</sys_updated_by>
+            <sys_updated_on>2019-03-16 02:46:57</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption/>
+            <header>false</header>
+            <name>x_snc_the_division_players</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>admin-eduque</sys_created_by>
+            <sys_created_on>2019-03-16 02:46:57</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>6461addc1354fb401f2f53173244b099</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_snc_the_division_players</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="The Division 2 Discord Tracker" source="x_snc_the_division">733ed55c1354fb401f2f53173244b06c</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="The Division 2 Discord Tracker">733ed55c1354fb401f2f53173244b06c</sys_scope>
+            <sys_update_name>sys_ui_section_6461addc1354fb401f2f53173244b099</sys_update_name>
+            <sys_updated_by>admin-eduque</sys_updated_by>
+            <sys_updated_on>2019-03-16 02:46:57</sys_updated_on>
+            <sys_user/>
+            <title>true</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>
