@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update>
-    <sys_dictionary action="INSERT_OR_UPDATE" element="pid" table="x_snc_the_division_players">
+    <sys_dictionary action="INSERT_OR_UPDATE" element="pid" table="x_snc_the_division_record">
         <active>true</active>
         <array>false</array>
         <array_denormalized>false</array_denormalized>
-        <attributes/>
+        <attributes>edge_encryption_enabled=true</attributes>
         <audit>false</audit>
-        <calculation><![CDATA[(function calculatedFieldValue(current) {
-
-	// Add your code here
-	return '';  // return the calculated value
-
-})(current);]]></calculation>
-        <choice/>
+        <calculation/>
+        <choice>0</choice>
         <choice_field/>
         <choice_table/>
         <column_label>pid</column_label>
@@ -35,7 +30,7 @@
         <internal_type display_value="String">string</internal_type>
         <mandatory>false</mandatory>
         <max_length>200</max_length>
-        <name>x_snc_the_division_players</name>
+        <name>x_snc_the_division_record</name>
         <next_element/>
         <primary>false</primary>
         <read_only>false</read_only>
@@ -52,16 +47,16 @@
         <staged>false</staged>
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>admin-eduque</sys_created_by>
-        <sys_created_on>2019-03-16 02:36:37</sys_created_on>
-        <sys_id>c6ced19c1354fb401f2f53173244b087</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_created_on>2019-03-19 17:29:21</sys_created_on>
+        <sys_id>2b180c2913dc7f401f2f53173244b02b</sys_id>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name>pid</sys_name>
         <sys_package display_value="The Division 2 Discord Tracker" source="x_snc_the_division">733ed55c1354fb401f2f53173244b06c</sys_package>
         <sys_policy/>
         <sys_scope display_value="The Division 2 Discord Tracker">733ed55c1354fb401f2f53173244b06c</sys_scope>
-        <sys_update_name>sys_dictionary_x_snc_the_division_players_pid</sys_update_name>
+        <sys_update_name>sys_dictionary_x_snc_the_division_record_pid</sys_update_name>
         <sys_updated_by>admin-eduque</sys_updated_by>
-        <sys_updated_on>2019-03-16 02:36:37</sys_updated_on>
+        <sys_updated_on>2019-03-19 17:29:21</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>

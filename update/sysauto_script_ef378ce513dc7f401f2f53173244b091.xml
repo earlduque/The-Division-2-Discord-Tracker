@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sysauto_script">
+    <sysauto_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <condition/>
+        <conditional>false</conditional>
+        <name>Get records</name>
+        <run_as display_value="Earl Duque">d4164bc0134ed3001f2f53173244b0d9</run_as>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period>1970-01-01 02:00:00</run_period>
+        <run_start>2019-03-19 17:25:32</run_start>
+        <run_time>1970-01-01 08:00:00</run_time>
+        <run_type>periodically</run_type>
+        <script><![CDATA[var rm = new sn_ws.RESTMessageV2();
+rm.setHttpMethod('GET');
+rm.setLogLevel('all');
+rm.setEndpoint(gs.getProperty('apify.endpoint.division2'));
+var response = rm.execute();
+var answer = JSON.parse(response.getBody());
+var result_log = '';
+var discord_message = '';
+
+for (var result in answer){
+	var stats = answer[result].title.results[0];
+	// 	gs.info('division: ' + stats.name + ' ' + stats.kills_npc);
+	var gr = new GlideRecord('x_snc_the_division_record');
+	gr.addQuery('pid', stats.pid);
+	gr.addQuery('name', stats.name);
+	gr.addQuery('kills_pvp', stats.kills_pvp);
+	gr.addQuery('kills_npc', stats.kills_npc);
+	gr.addQuery('level_pve', stats.level_pve);
+	gr.addQuery('level_dz', stats.level_dz);
+	gr.query();
+	if (gr.next()){
+		result_log += 'No new stats found for ' + stats.name + '\n';
+	} else {
+		var gr2 = new GlideRecord('x_snc_the_division_record');
+		gr2.addQuery('name', stats.name);
+		gr2.addQuery('latest', 'true');
+		gr2.orderBy('number');
+		gr2.query();
+		gr2.next(); 
+		var kills_pvp = parseInt(gr2.getValue('kills_pvp'));
+		var kills_npc = parseInt(gr2.getValue('kills_npc'));
+		var level_pve = parseInt(gr2.getValue('level_pve'));
+		var level_dz = parseInt(gr2.getValue('level_dz'));
+		gr2.setValue('latest','false');
+		gr2.update();
+
+		gr.initialize();
+		gr.setValue('latest','true');
+		gr.setValue('pid', stats.pid);
+		gr.setValue('name', stats.name);
+		gr.setValue('kills_pvp', stats.kills_pvp);
+		gr.setValue('kills_npc', stats.kills_npc);
+		gr.setValue('level_pve', stats.level_pve);
+		gr.setValue('level_dz', stats.level_dz);
+		var kills_pvp_diff = parseInt(stats.kills_pvp) - kills_pvp;
+		var kills_npc_diff = parseInt(stats.kills_npc) - kills_npc;
+		var level_pve_diff = parseInt(stats.level_pve) - level_pve;
+		var level_dz_diff = parseInt(stats.level_dz) - level_dz;
+		gr.setValue('kills_pvp_diff', kills_pvp_diff);
+		gr.setValue('kills_npc_diff', kills_npc_diff);
+		gr.setValue('level_pve_diff', level_pve_diff);
+		gr.setValue('level_dz_diff', level_dz_diff);
+		gr.insert();
+		result_log += 'Stats updated for ' + stats.name + '\n';
+		if (kills_pvp_diff != 0 || kills_npc_diff != 0 || level_pve_diff != 0 || level_dz_diff != 0){
+			discord_message += '**' + stats.name + '**: ';
+			var things = [];
+			if (kills_npc_diff != 0) things.push('Has defeated ' + kills_npc_diff + ' more enemy faction units. ');
+			if (kills_pvp_diff == 1) things.push('Has eliminated another agent. ');
+			else if (kills_pvp_diff != 0) things.push('Has eliminated ' + kills_pvp_diff + ' more agents. ');
+			if (level_pve_diff != 0 && stats.level_pve == 30) things.push('**Is now level 30 in the light zone.**');
+			else if (level_pve_diff != 0) things.push('Is now LZ level ' + stats.level_pve + '. ');
+			if (level_dz_diff != 0 && stats.level_dz == 99) things.push('**Is now level 99 in the dark zone.**');
+			else if (level_dz_diff != 0) things.push('Is now DZ level ' + stats.level_dz + '. ');
+			if (things.length > 1) things.splice(things.length-1, 0, 'and ');
+			discord_message += things.join(' ') + '\n';
+		}
+	}
+}
+
+if (discord_message != ''){
+	var rm = new sn_ws.RESTMessageV2();
+	rm.setHttpMethod('POST');
+	rm.setLogLevel('all');
+	rm.setEndpoint('https://discordapp.com/api/channels/546047820940050463/messages'); //live
+// 	rm.setEndpoint('https://discordapp.com/api/channels/556159575674322961/messages'); //dev
+	rm.setRequestHeader('Content-Type', 'application/json');
+	rm.setRequestHeader('Authorization', gs.getProperty('discord.token'));
+	rm.setRequestHeader('User-Agent', 'ServiceNow');
+	var rmbody = {
+		"content": "Agents are on the move.",
+		"tts": false,
+		"embed": {
+			"title": "Progress update",
+			"description": discord_message
+		}
+	};
+	//rm.setStringParameter(rmbody);
+	rm.setRequestBody(JSON.stringify(rmbody));
+	var response = rm.execute();
+	var answer = response.getBody();
+	gs.info('division: ' + (answer));
+}
+
+gs.info('division: \n' + result_log);]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>admin-eduque</sys_created_by>
+        <sys_created_on>2019-03-19 17:27:00</sys_created_on>
+        <sys_id>ef378ce513dc7f401f2f53173244b091</sys_id>
+        <sys_mod_count>19</sys_mod_count>
+        <sys_name>Get records</sys_name>
+        <sys_package display_value="The Division 2 Discord Tracker" source="x_snc_the_division">733ed55c1354fb401f2f53173244b06c</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="The Division 2 Discord Tracker">733ed55c1354fb401f2f53173244b06c</sys_scope>
+        <sys_update_name>sysauto_script_ef378ce513dc7f401f2f53173244b091</sys_update_name>
+        <sys_updated_by>admin-eduque</sys_updated_by>
+        <sys_updated_on>2019-03-19 21:26:52</sys_updated_on>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+</record_update>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_page">
+    <sp_page action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <css/>
+        <draft>false</draft>
+        <dynamic_title_structure/>
+        <id>td2tracker</id>
+        <internal>false</internal>
+        <public>true</public>
+        <roles/>
+        <short_description/>
+        <sys_class_name>sp_page</sys_class_name>
+        <sys_created_by>admin-eduque</sys_created_by>
+        <sys_created_on>2019-03-18 18:51:56</sys_created_on>
+        <sys_id>7a511f4513147f401f2f53173244b07e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>td2tracker</sys_name>
+        <sys_package display_value="The Division 2 Discord Tracker" source="x_snc_the_division">733ed55c1354fb401f2f53173244b06c</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="The Division 2 Discord Tracker">733ed55c1354fb401f2f53173244b06c</sys_scope>
+        <sys_update_name>sp_page_7a511f4513147f401f2f53173244b07e</sys_update_name>
+        <sys_updated_by>admin-eduque</sys_updated_by>
+        <sys_updated_on>2019-03-18 18:51:56</sys_updated_on>
+        <title>division2trackers</title>
+    </sp_page>
+    <sys_translated_text action="delete_multiple" query="documentkey=7a511f4513147f401f2f53173244b07e"/>
+</record_update>

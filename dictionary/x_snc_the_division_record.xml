@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element label="Record" max_length="40" name="x_snc_the_division_record" type="collection">
         <element label="Kills npc" max_length="40" name="kills_npc" type="integer"/>
+        <element label="Kills npc difference" max_length="40" name="kills_npc_diff" type="integer"/>
         <element label="Kills pvp" max_length="40" name="kills_pvp" type="integer"/>
+        <element label="Kills pvp difference" max_length="40" name="kills_pvp_diff" type="integer"/>
+        <element label="Latest?" max_length="40" name="latest" type="boolean"/>
         <element label="Level dz" max_length="40" name="level_dz" type="integer"/>
+        <element label="Level dz difference" max_length="40" name="level_dz_diff" type="integer"/>
         <element label="Level pve" max_length="40" name="level_pve" type="integer"/>
+        <element label="Level pve difference" max_length="40" name="level_pve_diff" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" label="Name" max_length="40" name="name" type="string"/>
         <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
-        <element display="true" label="Player" max_length="32" name="player" reference="x_snc_the_division_players" type="reference"/>
-        <index name="index">
-            <element name="player"/>
-        </index>
+        <element attributes="edge_encryption_enabled=true" label="pid" max_length="200" name="pid" type="string"/>
     </element>
 </database>
