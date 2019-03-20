@@ -10,8 +10,8 @@
         <run_dayofweek>1</run_dayofweek>
         <run_period>1970-01-01 02:00:00</run_period>
         <run_start>2019-03-19 17:25:32</run_start>
-        <run_time>1970-01-01 08:00:00</run_time>
-        <run_type>periodically</run_type>
+        <run_time>1970-01-01 17:30:00</run_time>
+        <run_type>daily</run_type>
         <script><![CDATA[var rm = new sn_ws.RESTMessageV2();
 rm.setHttpMethod('GET');
 rm.setLogLevel('all');
@@ -40,45 +40,52 @@ for (var result in answer){
 		gr2.addQuery('latest', 'true');
 		gr2.orderBy('number');
 		gr2.query();
-		gr2.next(); 
-		var kills_pvp = parseInt(gr2.getValue('kills_pvp'));
-		var kills_npc = parseInt(gr2.getValue('kills_npc'));
-		var level_pve = parseInt(gr2.getValue('level_pve'));
-		var level_dz = parseInt(gr2.getValue('level_dz'));
-		gr2.setValue('latest','false');
-		gr2.update();
+		if (gr2.next()){ 
+			var kills_pvp = parseInt(gr2.getValue('kills_pvp'));
+			var kills_npc = parseInt(gr2.getValue('kills_npc'));
+			var level_pve = parseInt(gr2.getValue('level_pve'));
+			var level_dz = parseInt(gr2.getValue('level_dz'));
 
+			gr2.setValue('latest','false');
+			gr2.update();	
+
+		}
 		gr.initialize();
 		gr.setValue('latest','true');
 		gr.setValue('pid', stats.pid);
 		gr.setValue('name', stats.name);
 		gr.setValue('kills_pvp', stats.kills_pvp);
 		gr.setValue('kills_npc', stats.kills_npc);
-		gr.setValue('level_pve', stats.level_pve);
-		gr.setValue('level_dz', stats.level_dz);
-		var kills_pvp_diff = parseInt(stats.kills_pvp) - kills_pvp;
-		var kills_npc_diff = parseInt(stats.kills_npc) - kills_npc;
-		var level_pve_diff = parseInt(stats.level_pve) - level_pve;
-		var level_dz_diff = parseInt(stats.level_dz) - level_dz;
+		if(parseInt(stats.level_pve) < parseInt(level_pve)) gr.setValue('level_pve', level_pve);
+		else gr.setValue('level_pve', stats.level_pve);
+		if(parseInt(stats.level_dz) < parseInt(level_dz)) gr.setValue('level_dz', level_dz);
+		else gr.setValue('level_dz', stats.level_dz);
+		var kills_pvp_diff = parseInt(stats.kills_pvp) - ((typeof kills_pvp === 'undefined') ? 0 : kills_pvp);
+		var kills_npc_diff = parseInt(stats.kills_npc) - ((typeof kills_npc === 'undefined') ? 0 : kills_npc);
+		var level_pve_diff = parseInt(stats.level_pve) - ((typeof level_pve === 'undefined') ? 0 : level_pve);
+		var level_dz_diff = parseInt(stats.level_dz) - ((typeof level_dz === 'undefined') ? 0 : level_dz);
 		gr.setValue('kills_pvp_diff', kills_pvp_diff);
 		gr.setValue('kills_npc_diff', kills_npc_diff);
 		gr.setValue('level_pve_diff', level_pve_diff);
 		gr.setValue('level_dz_diff', level_dz_diff);
 		gr.insert();
-		result_log += 'Stats updated for ' + stats.name + '\n';
-		if (kills_pvp_diff != 0 || kills_npc_diff != 0 || level_pve_diff != 0 || level_dz_diff != 0){
+		if (kills_pvp_diff > 0 || kills_npc_diff > 0 || level_pve_diff > 0 || level_dz_diff > 0){
 			discord_message += '**' + stats.name + '**: ';
 			var things = [];
-			if (kills_npc_diff != 0) things.push('Has defeated ' + kills_npc_diff + ' more enemy faction units. ');
+			if (kills_npc_diff > 0) things.push('Has defeated ' + kills_npc_diff + ' more enemy faction units. ');
 			if (kills_pvp_diff == 1) things.push('Has eliminated another agent. ');
-			else if (kills_pvp_diff != 0) things.push('Has eliminated ' + kills_pvp_diff + ' more agents. ');
-			if (level_pve_diff != 0 && stats.level_pve == 30) things.push('**Is now level 30 in the light zone.**');
-			else if (level_pve_diff != 0) things.push('Is now LZ level ' + stats.level_pve + '. ');
-			if (level_dz_diff != 0 && stats.level_dz == 99) things.push('**Is now level 99 in the dark zone.**');
-			else if (level_dz_diff != 0) things.push('Is now DZ level ' + stats.level_dz + '. ');
+			else if (kills_pvp_diff > 0) things.push('Has eliminated ' + kills_pvp_diff + ' more agents. ');
+			if (level_pve_diff > 0 && stats.level_pve == 30) things.push('**Is now level 30 in the light zone.**');
+			else if (level_pve_diff > 0) things.push('Is now LZ level ' + stats.level_pve + '. ');
+			if (level_dz_diff > 0 && stats.level_dz == 99) things.push('**Is now level 99 in the dark zone.**');
+			else if (level_dz_diff > 0) things.push('Is now DZ level ' + stats.level_dz + '. ');
 			if (things.length > 1) things.splice(things.length-1, 0, 'and ');
 			discord_message += things.join(' ') + '\n';
+			result_log += 'Stats updated for ' + stats.name + '\n';
+		} else {
+			result_log += 'No new stats found for ' + stats.name + '\n';
 		}
+
 	}
 }
 
@@ -87,7 +94,7 @@ if (discord_message != ''){
 	rm.setHttpMethod('POST');
 	rm.setLogLevel('all');
 	rm.setEndpoint('https://discordapp.com/api/channels/546047820940050463/messages'); //live
-// 	rm.setEndpoint('https://discordapp.com/api/channels/556159575674322961/messages'); //dev
+	// 	rm.setEndpoint('https://discordapp.com/api/channels/556159575674322961/messages'); //dev
 	rm.setRequestHeader('Content-Type', 'application/json');
 	rm.setRequestHeader('Authorization', gs.getProperty('discord.token'));
 	rm.setRequestHeader('User-Agent', 'ServiceNow');
@@ -111,14 +118,14 @@ gs.info('division: \n' + result_log);]]></script>
         <sys_created_by>admin-eduque</sys_created_by>
         <sys_created_on>2019-03-19 17:27:00</sys_created_on>
         <sys_id>ef378ce513dc7f401f2f53173244b091</sys_id>
-        <sys_mod_count>19</sys_mod_count>
+        <sys_mod_count>30</sys_mod_count>
         <sys_name>Get records</sys_name>
         <sys_package display_value="The Division 2 Discord Tracker" source="x_snc_the_division">733ed55c1354fb401f2f53173244b06c</sys_package>
         <sys_policy/>
         <sys_scope display_value="The Division 2 Discord Tracker">733ed55c1354fb401f2f53173244b06c</sys_scope>
         <sys_update_name>sysauto_script_ef378ce513dc7f401f2f53173244b091</sys_update_name>
         <sys_updated_by>admin-eduque</sys_updated_by>
-        <sys_updated_on>2019-03-19 21:26:52</sys_updated_on>
+        <sys_updated_on>2019-03-20 15:42:22</sys_updated_on>
         <upgrade_safe>false</upgrade_safe>
     </sysauto_script>
 </record_update>
