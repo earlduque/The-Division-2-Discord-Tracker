@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="items_looted_diff" label="Items Looted difference" language="en" table="x_snc_the_division_record">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>items_looted_diff</element>
+            <help/>
+            <hint/>
+            <label>Items Looted difference</label>
+            <language>en</language>
+            <name>x_snc_the_division_record</name>
+            <plural>Items Looted differences</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin-eduque</sys_created_by>
+            <sys_created_on>2019-04-02 06:31:55</sys_created_on>
+            <sys_id>a9e735b5132837001f2f53173244b061</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Items Looted difference</sys_name>
+            <sys_package display_value="The Division 2 Discord Tracker" source="x_snc_the_division">733ed55c1354fb401f2f53173244b06c</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="The Division 2 Discord Tracker">733ed55c1354fb401f2f53173244b06c</sys_scope>
+            <sys_update_name>sys_documentation_x_snc_the_division_record_items_looted_diff_en</sys_update_name>
+            <sys_updated_by>admin-eduque</sys_updated_by>
+            <sys_updated_on>2019-04-02 06:31:55</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

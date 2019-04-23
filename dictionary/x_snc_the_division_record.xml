@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element label="Record" max_length="40" name="x_snc_the_division_record" type="collection">
+        <element label="Gear Score" max_length="40" name="gearscore" type="integer"/>
+        <element label="Gear Score difference" max_length="40" name="gearscore_diff" type="integer"/>
+        <element label="Items Looted" max_length="40" name="items_looted" type="integer"/>
+        <element label="Items Looted difference" max_length="40" name="items_looted_diff" type="integer"/>
         <element label="Kills npc" max_length="40" name="kills_npc" type="integer"/>
         <element label="Kills npc difference" max_length="40" name="kills_npc_diff" type="integer"/>
         <element label="Kills pvp" max_length="40" name="kills_pvp" type="integer"/>

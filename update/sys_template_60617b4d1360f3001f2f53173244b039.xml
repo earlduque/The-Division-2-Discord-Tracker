@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_template">
+    <sys_template action="INSERT_OR_UPDATE">
+        <active>false</active>
+        <global>false</global>
+        <group/>
+        <link_element/>
+        <name>TEMPLATE4</name>
+        <next/>
+        <next_child/>
+        <roles/>
+        <short_description>The Division 2 first poke</short_description>
+        <show_on_template_bar>true</show_on_template_bar>
+        <stand_alone>false</stand_alone>
+        <sys_class_name>sys_template</sys_class_name>
+        <sys_created_by>admin-eduque</sys_created_by>
+        <sys_created_on>2019-03-31 07:28:27</sys_created_on>
+        <sys_id>60617b4d1360f3001f2f53173244b039</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>TEMPLATE4</sys_name>
+        <sys_package display_value="The Division 2 Discord Tracker" source="x_snc_the_division">733ed55c1354fb401f2f53173244b06c</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="The Division 2 Discord Tracker">733ed55c1354fb401f2f53173244b06c</sys_scope>
+        <sys_update_name>sys_template_60617b4d1360f3001f2f53173244b039</sys_update_name>
+        <sys_updated_by>admin-eduque</sys_updated_by>
+        <sys_updated_on>2019-04-01 23:37:15</sys_updated_on>
+        <table>x_snc_web_scraper_task</table>
+        <template>endpoint=https://thedivisiontab.com/0d31adf8-eec1-402a-a262-0b4fb9ef2e2f&#13;
+https://thedivisiontab.com/12026e89-42f3-4038-a7ec-ad927a9595a6&#13;
+https://thedivisiontab.com/166909bc-5b6d-4a3c-8186-43f31e2453eb&#13;
+https://thedivisiontab.com/6a9a20c2-886a-4720-b247-0105900510b6&#13;
+https://thedivisiontab.com/732170c3-de3e-4584-bce8-80cedd99cc5c&#13;
+https://thedivisiontab.com/82497602-fd83-4dd5-929f-42bd29b7f4f2&#13;
+https://thedivisiontab.com/892475eb-5967-4c5d-bcf2-8e033b28acb4&#13;
+https://thedivisiontab.com/8b63acfa-a4bd-4eee-bd29-5231cbf9c213&#13;
+https://thedivisiontab.com/9c1f50ed-7fc8-478a-abe5-5d596bd21306&#13;
+https://thedivisiontab.com/a0a86fef-cf89-4cfc-b6c4-9cc7f21f012f&#13;
+https://thedivisiontab.com/a9de1477-2037-49b0-a3e0-39be9339412e&#13;
+https://thedivisiontab.com/c8cdc173-018a-43f7-858a-5d70da7fb6a3&#13;
+https://thedivisiontab.com/f9340358-546e-4339-adcb-9e0acfdb5805&#13;
+https://thedivisiontab.com/fe7d4e9f-cee8-4f6c-a7d7-25b01526788b^find_json=false^http_method=GET^remove_html=false^short_description=The Division 2 first poke^EQ</template>
+        <user display_value="Earl Duque">d4164bc0134ed3001f2f53173244b0d9</user>
+        <view/>
+    </sys_template>
+</record_update>
